@@ -12,11 +12,5 @@ config = {
             "default_state": True,
             "location": "hall"
         }
-    ],
-    "mqtt": {
-        "broker": "m14.cloudmqtt.com",
-        "port": 11241,
-        "username": "XXXXXXX",
-        "password": "XXXXXX"
-    }
+    ]
 }
