@@ -16,7 +16,7 @@ config = {
     "mqtt": {
         "broker": "m14.cloudmqtt.com",
         "port": 11241,
-        "username": "eiawfyhc",
-        "password": "vDBe41ga8fsE"
+        "username": "XXXXXXX",
+        "password": "XXXXXX"
     }
 }
