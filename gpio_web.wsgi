@@ -1,0 +1,1 @@
+from gpio_web import app as application
