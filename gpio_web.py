@@ -27,8 +27,9 @@ if __name__ == '__main__':
 
 @mqtt.on_connect()
 def handle_connect(client, userdata, flags, rc):
+    print("mqtt connected")
     for item in db['gpio']:
-        mqtt.subscribe("{}/feeds/{}.{}".format(db['mqtt']['username'], db['location'], item['pin']))
+        mqtt.subscribe("{}/feeds/{}.{}".format(db['mqtt']['username'], item['location'], item['pin']))
 
 
 @mqtt.on_message()
@@ -53,5 +54,5 @@ def handle_mqtt_message(client, userdata, message):
 
 
 def mqtt_publish(pin, value):
-    mqtt.publish("{}/feeds/{}.{}".format(db['mqtt']['username'], db['location'], pin), value)
+    mqtt.publish("{}/feeds/{}.{}".format(db['mqtt']['username'], "location", pin), value)
 
