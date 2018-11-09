@@ -15,6 +15,7 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 echo "user check complete"
+
 #git clone https://github.com/ai-93/piot.git
 #git checkout -b test
 #pip3 install -r piot/requirements.txt
