@@ -26,9 +26,7 @@ printf "\n Installing python dependencies completed successfully \n ############
 printf "\n Setup piot \n ##########################\n"
 python3 setup_support.py
 printf "\n Setup piot completed successfully \n ##########################\n"
-printf "\n Setup piot crontab \n ##########################\n"
-cronjob="@reboot python3 /home/pi/piot/gpio_web.py &"
-(crontab -u root -l; echo "$cronjob" ) | crontab -u root -
-printf "\n Setup piot crontab completed \n ##########################\n"
+printf "\n Setup piot service \n ##########################\n"
 cp piot.service /lib/systemd/system/
 systemctl enable piot.service
+printf "\n Setup piot service completed \n ##########################\n"
