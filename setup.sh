@@ -29,7 +29,7 @@ printf "\n Setup piot \n ##########################\n"
 python3 setup_support.py
 printf "\n Setup piot completed successfully \n ##########################\n"
 printf "\n Setup piot crontab \n ##########################\n"
-cronjob="@reboot bash /home/pi/piot/piot.sh"
+cronjob="@reboot bash /home/pi/piot/piot.sh &"
 (crontab -u root -l; echo "$cronjob" ) | crontab -u root -
 printf "\n Setup piot crontab completed \n ##########################\n"
 
