@@ -50,15 +50,20 @@ class Setup:
         self.mqtt_value = {"broker": broker_url, "port": port, "username": username, "password": password, "refresh_time": refresh_time}
 
     def create_db(self):
+        print("GPIO support")
         self.gpio_setup()
+        print("MQTT support")
         self.mqtt_setup()
 
         with open('db.json', 'w') as outfile:
             json.dump({"gpio": self.gpio_list, "mqtt": self.mqtt_value}, outfile)
 
-    def setup_init(self):
-        self.check_if_db_exist()
+        print("DB setup complete")
 
+    def setup_init(self):
+        print("DB check")
+        self.check_if_db_exist()
+        print("DB check: {}".format(self.is_db_exist))
         if self.is_db_exist:
             self.check_db_integrity()
             if self.db_integrity:
@@ -72,185 +77,3 @@ print(dir_path)
 set = Setup()
 
 set.setup_init()
-
-# def gpioadd(pin, name, default_state, etype, finish):
-#     print ("in gpio add")
-#
-#     if finish =='on':
-#         table = db.table('info')
-#         servername = table.all()[0]['name']
-#         db.purge_table('info')
-#
-#         table.insert(
-#                 {
-#                     'name': servername,
-#                     'local_address': '',
-#                     'public_address': '',
-#                     'is_auth_setup': True,
-#                     'is_gpio_config_complete': True,
-#                     'is_mqtt_config_complete': True,
-#                     'is_public_access_config_complete': False,
-#                     'is_initial': False
-#                 }
-#             )
-#
-#     table = db.table('gpio')
-#     table.insert(
-#                 {
-#                     'pin': pin,
-#                     'name': name,
-#                     'default_state': default_state,
-#                     'etype': etype,
-#                     'current_state': get_pin_status(int(pin))
-#                 }
-#             )
-#
-# def publicaccesssetup(enable):
-#     print ("in public access setup")
-#
-#     if enable:
-#         table = db.table('info')
-#         servername = table.all()[0]
-#
-#         servername = servername['name']
-#         db.purge_table('info')
-#         table = db.table('info')
-#         table.insert(
-#                     {
-#                         'name': servername,
-#                         'local_address': '',
-#                         'public_address': 'https://{}.serveo.net'.format(servername),
-#                         'is_auth_setup': True,
-#                         'is_gpio_config_complete': True,
-#                         'is_mqtt_config_complete': True,
-#                         'is_public_access_config_complete': True,
-#                         'is_initial': False
-#                     }
-#                 )
-#     else:
-#         table = db.table('info')
-#         servername = table.all()[0]
-#
-#         servername = servername['name']
-#         db.purge_table('info')
-#         table = db.table('info')
-#         table.insert(
-#                     {
-#                         'name': servername,
-#                         'local_address': '',
-#                         'public_address': '',
-#                         'is_auth_setup': True,
-#                         'is_gpio_config_complete': True,
-#                         'is_mqtt_config_complete': True,
-#                         'is_public_access_config_complete': True,
-#                         'is_initial': False
-#                     }
-#                 )
-#
-# def mqttSetup(broker, port, username, password):
-#     print ("in mqtt setup")
-#     table = db.table('info')
-#     servername = table.all()[0]
-#
-#     servername = servername['name']
-#     db.purge_table('info')
-#     table = db.table('info')
-#     table.insert(
-#                 {
-#                     'name': servername,
-#                     'local_address': '',
-#                     'public_address': '',
-#                     'is_auth_setup': True,
-#                     'is_gpio_config_complete': False,
-#                     'is_mqtt_config_complete': True,
-#                     'is_public_access_config_complete': False,
-#                     'is_initial': False
-#                 }
-#             )
-#     table = db.table('mqtt')
-#     table.insert(
-#                 {
-#                     'broker': broker,
-#                     'port': port,
-#                     'username': username,
-#                     'password': password
-#                 }
-#             )
-#
-#
-# def onboard_user(servername, username, password):
-#     print ("in onboard")
-#     table = db.table('info')
-#     db.purge_table('info')
-#     table = db.table('info')
-#     table.insert(
-#                 {
-#                     'name': servername,
-#                     'local_address': '',
-#                     'public_address': '',
-#                     'is_auth_setup': True,
-#                     'is_gpio_config_complete': False,
-#                     'is_mqtt_config_complete': False,
-#                     'is_public_access_config_complete': False,
-#                     'is_initial': False
-#                 }
-#             )
-#     table = db.table('user')
-#     table.insert(
-#                 {
-#                     'username': username,
-#                     'password': password
-#                 }
-#             )
-#
-# def getgpio_list():
-#     table = db.table('gpio')
-#     glist = table.all()
-#     return glist
-#
-#
-# def get_setup_stage():
-#     table = db.table('info')
-#     info = table.all()
-#
-#     if info[0]['is_initial']:
-#         return "is_initial"
-#     elif not info[0]['is_auth_setup']:
-#         return 'is_auth_setup'
-#     elif not info[0]['is_mqtt_config_complete']:
-#         return 'is_mqtt_config_complete'
-#     elif not info[0]['is_gpio_config_complete']:
-#         return 'is_gpio_config_complete'
-#     elif not info[0]['is_public_access_config_complete']:
-#         return 'is_public_access_config_complete'
-#     else:
-#         return 'index'
-#
-#
-# def is_initial():
-#     table = db.table('info')
-#     info = table.all()
-#
-#     if not info[0]['is_initial'] and info[0]['is_public_access_config_complete']:
-#         return False
-#     else:
-#         return True
-#
-#
-# def setup_db():
-#     table = db.table('info')
-#     info = table.all()
-#     if info == []:
-#         table.insert(
-#                 {
-#                     'name': '',
-#                     'local_address': '',
-#                     'public_address': '',
-#                     'is_auth_setup': False,
-#                     'is_gpio_config_complete': False,
-#                     'is_mqtt_config_complete': False,
-#                     'is_public_access_config_complete': False,
-#                     'is_initial': True
-#                 }
-#             )
-#     print (info)
