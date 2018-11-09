@@ -6,7 +6,7 @@ After=syslog.target network.target
 [Service]
 User=root
 Group=root
-ExecStart=python3 /home/pi/piot/gpio_web.py
+ExecStart=/usr/bin/python3 /home/pi/piot/gpio_web.py
 Restart=always
 
 [Install]
