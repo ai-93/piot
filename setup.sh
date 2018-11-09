@@ -15,6 +15,7 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 git clone https://github.com/ai-93/piot.git
+cd piot
 git checkout -b test
-pip3 install -r piot/requirements.txt
-python3 piot/setup_support.py
+pip3 install -r requirements.txt
+python3 setup_support.py
