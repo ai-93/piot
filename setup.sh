@@ -28,3 +28,5 @@ printf "\n Installing python dependencies completed successfully \n ############
 printf "\n Setup piot \n ##########################\n"
 python3 setup_support.py
 printf "\n Setup piot completed successfully \n ##########################\n"
+
+
