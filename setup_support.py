@@ -58,6 +58,10 @@ class Setup:
         if not self.is_db_exist:
             self.create_db()
 
+        run_it = input("Do you want to run the server(y/n): ")
+
+        if run_it.upper() == "Y":
+            pass
 
 
 set = Setup()

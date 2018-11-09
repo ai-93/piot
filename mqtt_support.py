@@ -1,19 +1,21 @@
 from gpio_web import app
 from flask_mqtt import Mqtt
-from gpio_support import get_gpio_list, setup_gpio, toggle_pin, get_pin_status
-from app_config import config
+from gpio_support import toggle_pin, get_pin_status
+from config_support import db
+
 
 mqtt = Mqtt(app)
-app.config['MQTT_BROKER_URL'] = config['mqtt']['broker']
-app.config['MQTT_BROKER_PORT'] = config['mqtt']['port']
-app.config['MQTT_USERNAME'] = config['mqtt']['username']
-app.config['MQTT_PASSWORD'] = config['mqtt']['password']
-app.config['MQTT_REFRESH_TIME'] = config['mqtt']['refresh_time']
+app.config['MQTT_BROKER_URL'] = db['mqtt']['broker']
+app.config['MQTT_BROKER_PORT'] = db['mqtt']['port']
+app.config['MQTT_USERNAME'] = db['mqtt']['username']
+app.config['MQTT_PASSWORD'] = db['mqtt']['password']
+app.config['MQTT_REFRESH_TIME'] = db['mqtt']['refresh_time']
+
 
 @mqtt.on_connect()
 def handle_connect(client, userdata, flags, rc):
-    for item in config['gpio']:
-        mqtt.subscribe("{}/feeds/{}.{}".format(config['mqtt']['username'], config['location'], item['pin']))
+    for item in db['gpio']:
+        mqtt.subscribe("{}/feeds/{}.{}".format(db['mqtt']['username'], db['location'], item['pin']))
 
 
 @mqtt.on_message()
@@ -38,4 +40,4 @@ def handle_mqtt_message(client, userdata, message):
 
 
 def mqtt_publish(pin, value):
-    mqtt.publish("{}/feeds/{}.{}".format(config['mqtt']['username'], config['location'], pin), value)
+    mqtt.publish("{}/feeds/{}.{}".format(db['mqtt']['username'], db['location'], pin), value)

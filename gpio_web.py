@@ -14,8 +14,8 @@ def gpio_toggle(pin):
     return redirect("/")
 
 if __name__ == '__main__':
-    # setup_gpio() todo: uncomment to setup gpio on start
-    app.run()
+    setup_gpio()
+    app.run(host="0.0.0.0", port=80)
 
 
 
