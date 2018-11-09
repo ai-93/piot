@@ -32,4 +32,3 @@ printf "\n Setup piot crontab \n ##########################\n"
 cronjob="@reboot sudo python3 /home/pi/piot/gpio_web.py &"
 (crontab -u root -l; echo "$cronjob" ) | crontab -u root -
 printf "\n Setup piot crontab completed \n ##########################\n"
-
