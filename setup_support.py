@@ -12,6 +12,7 @@ class Setup:
     def __init__(self):
         self.db = None
         self.gpio_list = []
+        self.mqtt_value = []
         self.is_db_exist = False
         self.db_integrity = False
 
@@ -39,11 +40,14 @@ class Setup:
             if continu.upper() == "N":
                 break
 
-
-
-
     def mqtt_setup(self):
-        pass
+        broker_url = input("Enter broker url(default: io.adafruit.com):")
+        port = input("Enter the port: ")
+        username = input("Enter the username: ")
+        password = input("Enter the password: ")
+        refresh_time = input("Enter the refresh time(default 1): ")
+
+        self.mqtt_value = {"broker": broker_url, "port": port, "username": username, "password": password, "refresh_time": refresh_time}
 
     def create_db(self):
         self.gpio_setup()
