@@ -53,6 +53,9 @@ class Setup:
         self.gpio_setup()
         self.mqtt_setup()
 
+        with open('db.json', 'w') as outfile:
+            json.dump({"gpio": self.gpio_list, "mqtt": self.mqtt_value}, outfile)
+
     def setup_init(self):
         self.check_if_db_exist()
 
