@@ -1,5 +1,6 @@
 import os, json
-from config_support import db_dir
+
+db_dir = "/home/pi/piot/db.json"
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
