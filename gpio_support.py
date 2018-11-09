@@ -1,5 +1,6 @@
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 from app_config import config
+
 
 def setup_gpio():
     GPIO.setmode(GPIO.BCM)
@@ -13,20 +14,17 @@ def setup_gpio():
             GPIO.output(pin_info['pin'], 1)
 
 
-def toggle_pin(pin):  # todo: change to actual toggle function
+def toggle_pin(pin):
     status = get_pin_status(pin)
-    # if status:
-    #     GPIO.output(pin_info['pin'], 0)
-    # else:
-    #     GPIO.output(pin_info['pin'], 1)
-    print (status)
-    print (pin)
+    if status:
+        GPIO.output(pin, 0)
+    else:
+        GPIO.output(pin, 1)
 
 
 def get_pin_status(pin):
-    # status = GPIO.input(pin)
-    # print status
-    return True # todo: change to actual value
+    status = GPIO.input(pin)
+    return status
 
 
 def get_gpio_list():

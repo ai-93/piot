@@ -1,9 +1,17 @@
 # piot
 Web Service for Raspberry pi to control relay connected to it via gpio
 
-Setup:
-  pip install -r requirements.txt
-  
- 
+wget
+```
+    sudo bash <(wget -O- -q  https://raw.githubusercontent.com/ai-93/piot/test/setup.sh)
+```
+
+curl
+```
+    sudo bash <(curl -s  https://raw.githubusercontent.com/ai-93/piot/test/setup.sh)
+```
+
 Run Test server: 
-  python3 gpio_web.py
+```
+    sudo piot
+```
