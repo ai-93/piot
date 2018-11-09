@@ -17,5 +17,6 @@ fi
 git clone https://github.com/ai-93/piot.git
 cd piot
 git checkout -b test
+git pull origin test
 pip3 install -r requirements.txt
 python3 setup_support.py
