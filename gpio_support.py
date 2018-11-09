@@ -18,7 +18,7 @@ def setup_gpio():
 def toggle_pin(pin):
     status = get_pin_status(pin)
 
-    GPIO.output(pin, status)
+    GPIO.output(pin, not status)
     #
     # if status:
     #     GPIO.output(pin, status)
