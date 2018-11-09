@@ -57,9 +57,9 @@ def gpio_toggle(pin):
     current_state = get_pin_status(pin)
 
     if current_state:
-        status = "OFF"
-    else:
         status = "ON"
+    else:
+        status = "OFF"
 
     mqtt_publish(pin, status)
     return redirect("/")

@@ -7,18 +7,23 @@ def setup_gpio():
     for pin_info in db['gpio']:
         GPIO.setup(pin_info['pin'], GPIO.OUT)
 
-        if pin_info['default_state']:
-            GPIO.output(pin_info['pin'], 0)
-        else:
-            GPIO.output(pin_info['pin'], 1)
+        GPIO.output(pin_info['pin'], pin_info['default_state'])
+        #
+        # if pin_info['default_state']:
+        #     GPIO.output(pin_info['pin'], pin_info['default_state'])
+        # else:
+        #     GPIO.output(pin_info['pin'], 1)
 
 
 def toggle_pin(pin):
     status = get_pin_status(pin)
-    if status:
-        GPIO.output(pin, 0)
-    else:
-        GPIO.output(pin, 1)
+
+    GPIO.output(pin, status)
+    #
+    # if status:
+    #     GPIO.output(pin, status)
+    # else:
+    #     GPIO.output(pin, 1)
 
 
 def get_pin_status(pin):
