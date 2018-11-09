@@ -41,9 +41,9 @@ class Setup:
         self.mqtt_value = {"broker": broker_url, "port": port, "username": username, "password": password, "refresh_time": refresh_time}
 
     def create_db(self):
-        print("GPIO support")
+        print("GPIO support setup")
         self.gpio_setup()
-        print("MQTT support")
+        print("MQTT support setup")
         self.mqtt_setup()
 
         with open('db.json', 'w') as outfile:
