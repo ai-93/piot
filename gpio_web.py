@@ -36,6 +36,8 @@ def handle_mqtt_message(client, userdata, message):
         state = 1
 
     current_state = get_pin_status(pin)
+    print("current status: {}".format(current_state))
+    print("state status: {}".format(state))
 
     if state != current_state:
         toggle_pin(pin)
@@ -53,15 +55,15 @@ def main():
 @app.route('/gpio/<int:pin>')
 def gpio_toggle(pin):
     toggle_pin(pin)
-
-    current_state = get_pin_status(pin)
-
-    if current_state:
-        status = "OFF"
-    else:
-        status = "ON"
-
-    mqtt_publish(pin, status)
+    #
+    # current_state = get_pin_status(pin)
+    #
+    # if current_state:
+    #     status = "OFF"
+    # else:
+    #     status = "ON"
+    #
+    # mqtt_publish(pin, status)
     return redirect("/")
 
 if __name__ == '__main__':
