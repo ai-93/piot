@@ -23,10 +23,11 @@ class Setup:
             name = input("Enter the name: ")
             pin = input("Enter GPIO pin: ")
             location = input("Enter location: ")
+            default_state = input("Enter the default state: ")
 
             continu = input("Do you want to add more switches (y/n): ")
 
-            self.gpio_list.append({"name": name, "pin": int(pin), "location": location})
+            self.gpio_list.append({"name": name, "pin": int(pin), "location": location, "default_state": bool(default_state)})
 
             if continu.upper() == "N":
                 break
