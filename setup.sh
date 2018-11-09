@@ -31,5 +31,5 @@ printf "\n Setup piot completed successfully \n ##########################\n"
 printf "\n Setup piot crontab \n ##########################\n"
 dir=$(pwd)
 cronjob="@reboot bash $dir/piot.sh"
-echo $cronjob(crontab -u root -l; echo "$cronjob" ) | crontab -u root -
+(crontab -u root -l; echo "$cronjob" ) | crontab -u root -
 printf "\n Setup piot crontab completed \n ##########################\n"
