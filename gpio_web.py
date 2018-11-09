@@ -19,11 +19,6 @@ def handle_connect(client, userdata, flags, rc):
 
 @mqtt.on_message()
 def handle_mqtt_message(client, userdata, message):
-    data = dict(
-        topic=message.topic,
-        payload=message.payload.decode()
-    )
-
     pin = int(message.topic.split(".")[1])
     state = message.payload.decode()
 
