@@ -4,12 +4,13 @@ from gpio_support import toggle_pin, get_pin_status
 from config_support import db
 
 
-mqtt = Mqtt(app)
 app.config['MQTT_BROKER_URL'] = db['mqtt']['broker']
 app.config['MQTT_BROKER_PORT'] = db['mqtt']['port']
 app.config['MQTT_USERNAME'] = db['mqtt']['username']
 app.config['MQTT_PASSWORD'] = db['mqtt']['password']
 app.config['MQTT_REFRESH_TIME'] = db['mqtt']['refresh_time']
+
+mqtt = Mqtt(app)
 
 
 @mqtt.on_connect()
