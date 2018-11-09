@@ -14,8 +14,8 @@ if [[ $EUID -ne 0 ]]; then
   echo "piot setup requires user to be root. su or sudo -s and run again ..."
   exit 1
 fi
-
-git clone https://github.com/ai-93/piot.git
+echo "user check complete"
+#git clone https://github.com/ai-93/piot.git
 #git checkout -b test
 #pip3 install -r piot/requirements.txt
 #python3 piot/setup_support.py
