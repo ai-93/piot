@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 from config_support import db
-
+from gpio_web import mqtt_publish
 
 def setup_gpio():
     GPIO.setmode(GPIO.BCM)
@@ -17,9 +17,13 @@ def setup_gpio():
 def toggle_pin(pin):
     status = get_pin_status(pin)
     if status:
+        status = "ON"
         GPIO.output(pin, 0)
     else:
+        status = "OFF"
         GPIO.output(pin, 1)
+
+    mqtt_publish(pin, status)
 
 
 def get_pin_status(pin):
