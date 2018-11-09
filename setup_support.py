@@ -11,7 +11,7 @@ class Setup:
 
     def __init__(self):
         self.db = None
-
+        self.gpio_list = []
         self.is_db_exist = False
         self.db_integrity = False
 
@@ -26,8 +26,28 @@ class Setup:
         if "gpio" in self.db.keys():
             pass
 
-    def create_db(self):
+    def gpio_setup(self):
+        while True:
+            name = input("Enter the name: ")
+            pin = input("Enter GPIO pin: ")
+            location = input("Enter location: ")
+
+            continu = input("Do you want to add more switches (y/n): ")
+
+            self.gpio_list.append({"name": name, "pin": pin, "location": location})
+
+            if continu.upper() == "N":
+                break
+
+
+
+
+    def mqtt_setup(self):
         pass
+
+    def create_db(self):
+        self.gpio_setup()
+        self.mqtt_setup()
 
     def setup_init(self):
         self.check_if_db_exist()
@@ -42,7 +62,9 @@ class Setup:
             self.create_db()
 
 print(dir_path)
-print("Running Setup python")
+set = Setup()
+
+set.setup_init()
 
 # def gpioadd(pin, name, default_state, etype, finish):
 #     print ("in gpio add")
