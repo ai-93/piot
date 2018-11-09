@@ -52,6 +52,15 @@ def main():
 @app.route('/gpio/<int:pin>')
 def gpio_toggle(pin):
     toggle_pin(pin)
+
+    current_state = get_pin_status(pin)
+
+    if current_state:
+        status = "ON"
+    else:
+        status = "OFF"
+
+    mqtt_publish(pin, status)
     return redirect("/")
 
 if __name__ == '__main__':
