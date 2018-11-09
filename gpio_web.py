@@ -11,18 +11,6 @@ app.config['MQTT_PASSWORD'] = db['mqtt']['password']
 app.config['MQTT_REFRESH_TIME'] = db['mqtt']['refresh_time']
 mqtt = Mqtt(app)
 
-@app.route('/')
-def main():
-    return render_template('index.html', gpio_list = get_gpio_list())
-
-@app.route('/gpio/<int:pin>')
-def gpio_toggle(pin):
-    toggle_pin(pin)
-    return redirect("/")
-
-if __name__ == '__main__':
-    setup_gpio()
-    app.run(host="0.0.0.0", port=80)
 
 
 @mqtt.on_connect()
@@ -56,3 +44,16 @@ def handle_mqtt_message(client, userdata, message):
 def mqtt_publish(pin, value):
     mqtt.publish("{}/feeds/{}.{}".format(db['mqtt']['username'], "location", pin), value)
 
+
+@app.route('/')
+def main():
+    return render_template('index.html', gpio_list = get_gpio_list())
+
+@app.route('/gpio/<int:pin>')
+def gpio_toggle(pin):
+    toggle_pin(pin)
+    return redirect("/")
+
+if __name__ == '__main__':
+    setup_gpio()
+    app.run(host="0.0.0.0", port=80, debug=True)

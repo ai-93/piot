@@ -23,7 +23,7 @@ class Setup:
             name = input("Enter the name: ")
             pin = input("Enter GPIO pin: ")
             location = input("Enter location: ")
-            default_state = input("Enter the default state: ")
+            default_state = input("Enter the default state(default: False): ") or False
 
             continu = input("Do you want to add more switches (y/n): ")
 
