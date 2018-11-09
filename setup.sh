@@ -29,4 +29,5 @@ printf "\n Setup piot completed successfully \n ##########################\n"
 printf "\n Setup piot service \n ##########################\n"
 cp piot.service /lib/systemd/system/
 systemctl enable piot.service
+systemctl start piot
 printf "\n Setup piot service completed \n ##########################\n"
