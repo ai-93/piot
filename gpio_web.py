@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, request, jsonify
-from gpio_support import get_gpio_list, setup_gpio, get_pin_status, toggle_pin
+from gpio_support import get_gpio_list, setup_gpio, get_pin_status, toggle_pin, get_location
 from flask_mqtt import Mqtt
 from config_support import db
 
@@ -42,7 +42,8 @@ def handle_mqtt_message(client, userdata, message):
 
 
 def mqtt_publish(pin, value):
-    mqtt.publish("{}/feeds/{}.{}".format(db['mqtt']['username'], "location", pin), value)
+    location = get_location(pin)
+    mqtt.publish("{}/feeds/{}.{}".format(db['mqtt']['username'], location, pin), value)
 
 
 @app.route('/')

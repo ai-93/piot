@@ -39,3 +39,11 @@ def get_gpio_list():
         gpio_list.append(item)
     
     return gpio_list
+
+
+def get_location(pin):
+    for item in db['gpio']:
+        if item['pin'] == pin:
+            location = item['location']
+
+    return location
