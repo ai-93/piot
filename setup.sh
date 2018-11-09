@@ -19,8 +19,6 @@ printf "\n User Permission check completed successfully \n #####################
 printf "\n Cloning piot repo \n ##########################\n"
 git clone https://github.com/ai-93/piot.git
 cd piot
-git checkout -b test
-git pull origin test
 printf "\n Cloning piot repo completed successfully \n ##########################\n"
 printf "\n Installing python dependencies \n ##########################\n"
 pip3 install -r requirements.txt
