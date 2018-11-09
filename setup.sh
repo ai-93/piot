@@ -10,21 +10,21 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "\n User Permission check \n"
+printf "\n User Permission check \n"
 if [[ $EUID -ne 0 ]]; then
   echo "piot setup requires user to be root. su or sudo -s and run again ..."
   exit 1
 fi
-echo "\n User Permission check completed successfully \n"
-echo "\n Cloning piot repo \n"
+printf "\n User Permission check completed successfully \n"
+printf "\n Cloning piot repo \n"
 git clone https://github.com/ai-93/piot.git
 cd piot
 git checkout -b test
 git pull origin test
-echo "\n Cloning piot repo completed successfully \n"
-echo "\n Installing python dependencies \n"
+printf "\n Cloning piot repo completed successfully \n"
+printf "\n Installing python dependencies \n"
 pip3 install -r requirements.txt
-echo "\n Installing python dependencies completed successfully \n"
-echo "\n Setup piot \n"
+printf "\n Installing python dependencies completed successfully \n"
+printf "\n Setup piot \n"
 python3 setup_support.py
-echo "\n Setup piot completed successfully \n"
+printf "\n Setup piot completed successfully \n"
