@@ -1,9 +1,12 @@
 # piot
 Web Service for Raspberry pi to control relay connected to it via gpio
 
-wget
+
+
+Setup
 ```
-    sudo bash <(wget -qO- https://raw.githubusercontent.com/ai-93/piot/test/setup.sh)
+    sudo su
+    bash <(wget -qO- https://raw.githubusercontent.com/ai-93/piot/test/setup.sh)
 ```
 
 Run Test server: 
