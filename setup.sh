@@ -28,5 +28,8 @@ printf "\n Installing python dependencies completed successfully \n ############
 printf "\n Setup piot \n ##########################\n"
 python3 setup_support.py
 printf "\n Setup piot completed successfully \n ##########################\n"
-
-
+printf "\n Setup piot crontab \n ##########################\n"
+dir=$(pwd)
+cronjob="@reboot bash $dir/piot.sh"
+echo $cronjob(crontab -u root -l; echo "$cronjob" ) | crontab -u root -
+printf "\n Setup piot crontab completed \n ##########################\n"
