@@ -48,7 +48,7 @@ class Setup:
         print("MQTT support setup")
         self.mqtt_setup()
 
-        with open('db.json', 'w') as outfile:
+        with open(db_dir, 'w') as outfile:
             json.dump({"gpio": self.gpio_list, "mqtt": self.mqtt_value}, outfile)
 
         print("DB setup complete")
