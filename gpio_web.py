@@ -14,7 +14,6 @@ mqtt = Mqtt(app)
 
 @mqtt.on_connect()
 def handle_connect(client, userdata, flags, rc):
-    print("mqtt connected")
     for item in db['gpio']:
         mqtt.subscribe("{}/feeds/{}.{}".format(db['mqtt']['username'], item['location'], item['pin']))
 
@@ -24,7 +23,7 @@ def handle_mqtt_message(client, userdata, message):
         topic=message.topic,
         payload=message.payload.decode()
     )
-    print (data)
+
     pin = int(message.topic.split(".")[1])
     state = message.payload.decode()
 
@@ -34,8 +33,6 @@ def handle_mqtt_message(client, userdata, message):
         state = 0
 
     current_state = get_pin_status(pin)
-    print("current status: {}".format(current_state))
-    print("state status: {}".format(state))
 
     if state != current_state:
         toggle_pin(pin)
