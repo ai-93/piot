@@ -21,7 +21,7 @@ class Setup:
     def gpio_setup(self):
         while True:
             name = input("Enter the name: ")
-            pin = input("Enter GPIO pin: ")
+            pin = raw_input("Enter GPIO pin: ")
             location = input("Enter location: ")
 
             continu = input("Do you want to add more switches (y/n): ")
@@ -33,10 +33,10 @@ class Setup:
 
     def mqtt_setup(self):
         broker_url = input("Enter broker url(default: io.adafruit.com):") or "io.adafruit.com"
-        port = input("Enter the port(default: 1883): ") or  "1883"
+        port = raw_input("Enter the port(default: 1883): ") or  1883
         username = input("Enter the username: ")
         password = input("Enter the password: ")
-        refresh_time = input("Enter the refresh time(default 1): ") or  "1"
+        refresh_time = raw_input("Enter the refresh time(default 1): ") or  1
 
         self.mqtt_value = {"broker": broker_url, "port": port, "username": username, "password": password, "refresh_time": refresh_time}
 
