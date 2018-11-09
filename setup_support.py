@@ -21,24 +21,24 @@ class Setup:
     def gpio_setup(self):
         while True:
             name = input("Enter the name: ")
-            pin = raw_input("Enter GPIO pin: ")
+            pin = input("Enter GPIO pin: ")
             location = input("Enter location: ")
 
             continu = input("Do you want to add more switches (y/n): ")
 
-            self.gpio_list.append({"name": name, "pin": pin, "location": location})
+            self.gpio_list.append({"name": name, "pin": int(pin), "location": location})
 
             if continu.upper() == "N":
                 break
 
     def mqtt_setup(self):
         broker_url = input("Enter broker url(default: io.adafruit.com):") or "io.adafruit.com"
-        port = raw_input("Enter the port(default: 1883): ") or  1883
+        port = input("Enter the port(default: 1883): ") or  1883
         username = input("Enter the username: ")
         password = input("Enter the password: ")
-        refresh_time = raw_input("Enter the refresh time(default 1): ") or  1
+        refresh_time = input("Enter the refresh time(default 1): ") or  1
 
-        self.mqtt_value = {"broker": broker_url, "port": port, "username": username, "password": password, "refresh_time": refresh_time}
+        self.mqtt_value = {"broker": broker_url, "port": int(port), "username": username, "password": password, "refresh_time": int(refresh_time)}
 
     def create_db(self):
         print("GPIO support setup")
