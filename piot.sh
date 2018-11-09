@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-dir=$(pwd)
-python3 $dir/gpio_web.py
+python3 /home/pi/piot/gpio_web.py

@@ -1,4 +1,5 @@
 import os, json
+from config_support import db_dir
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -13,7 +14,7 @@ class Setup:
 
     def check_if_db_exist(self):
         try:
-            self.db = json.load(open("db.json"))
+            self.db = json.load(open(db_dir))
             self.is_db_exist = True
         except:
             pass
