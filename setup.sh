@@ -33,3 +33,5 @@ dir=$(pwd)
 cronjob="@reboot bash $dir/piot.sh"
 (crontab -u root -l; echo "$cronjob" ) | crontab -u root -
 printf "\n Setup piot crontab completed \n ##########################\n"
+printf "\n Rebooting system \n ##########################\n"
+reboot
