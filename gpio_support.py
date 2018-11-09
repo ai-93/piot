@@ -1,6 +1,5 @@
 import RPi.GPIO as GPIO
 from config_support import db
-from gpio_web import mqtt_publish
 
 def setup_gpio():
     GPIO.setmode(GPIO.BCM)
