@@ -1,11 +1,6 @@
 import os, json
-from tinydb import TinyDB, Query
-from gpio_support import get_pin_status
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
-
-# db = TinyDB('{}/db.json'.format(dir_path))
-
 
 class Setup:
 
@@ -21,10 +16,6 @@ class Setup:
             self.db = json.load(open("db.json"))
             self.is_db_exist = True
         except:
-            pass
-
-    def check_db_integrity(self):
-        if "gpio" in self.db.keys():
             pass
 
     def gpio_setup(self):
@@ -63,17 +54,12 @@ class Setup:
     def setup_init(self):
         print("DB check")
         self.check_if_db_exist()
-        print("DB check: {}".format(self.is_db_exist))
-        if self.is_db_exist:
-            self.check_db_integrity()
-            if self.db_integrity:
-                pass
-            else:
-                pass
-        else:
+        print("DB check completed")
+        if not self.is_db_exist:
             self.create_db()
 
-print(dir_path)
+
+
 set = Setup()
 
 set.setup_init()
