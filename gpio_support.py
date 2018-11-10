@@ -26,7 +26,8 @@ def get_gpio_list():
         item = {
             "name": pin_info['name'],
             "pin": pin_info['pin'],
-            "current_state": get_pin_status(pin_info['pin'])
+            "current_state": get_pin_status(pin_info['pin']),
+            "location": pin_info['location']
         }
 
         gpio_list.append(item)
