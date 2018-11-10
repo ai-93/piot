@@ -24,11 +24,11 @@
             {% for item in gpio_list %}
                 {% if item.current_state %}
                     <a href= "/gpio/{{ item.pin }}" class="list-group-item list-group-item-action list-group-item-success">
-                        Pin: {{ item.pin }} | {{ item.name }}
+                        Pin: {{ item.pin }} | {{ item.location }} {{ item.name }}
                     </a>
                 {% else %}
                     <a href= "/gpio/{{ item.pin }}" class="list-group-item list-group-item-action list-group-item-dark">
-                        Pin: {{ item.pin }} | {{ item.name }}
+                        Pin: {{ item.pin }} | {{ item.location }} {{ item.name }}
                     </a>
                 {% endif %}
             {% endfor %}
