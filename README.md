@@ -13,7 +13,7 @@ Password: your Adafruit IO key (click the AIO Key button on a dashboard to find 
 # Setup
 ```
     sudo su
-    bash <(wget -qO- https://raw.githubusercontent.com/ai-93/piot/Dev/setup.sh)
+    bash <(wget -qO- https://raw.githubusercontent.com/ai-93/piot/master/setup.sh)
 ```
 
 # Server Status: 
