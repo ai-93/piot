@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block body %}
+<header>
+  <h1><a href="/">{{ title }}</a></h1>
+</header>
+
+<main>
+  {% block main %}{% endblock %}
+</main>
+
+<footer>
+  <p>Made with love using python</p>
+</footer>
+{% endblock %}

@@ -1,0 +1,16 @@
+[Unit]
+Description=AutoSSH tunnel service on local port 80
+After=syslog.target network-online.target
+Wants=network-online.target
+
+[Service]
+User=root
+Group=root
+Environment="AUTOSSH_GATETIME=0"
+ExecStart=/usr/local/bin/autossh -M 0 -M 0 -R cloud9.serveo.net:80:localhost:80 serveo.net
+RemainAfterExit=no
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
