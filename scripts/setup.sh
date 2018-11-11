@@ -18,6 +18,7 @@ fi
 printf "\n User Permission check completed successfully \n ##########################\n"
 printf "\n Cloning piot repo \n ##########################\n"
 apt-get -y install git
+pip3 install pipenv
 git clone https://github.com/ai-93/piot.git
 cd piot
 printf "\n Cloning piot repo completed successfully \n ##########################\n"
