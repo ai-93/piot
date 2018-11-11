@@ -1,6 +1,8 @@
 import RPi.GPIO as GPIO
 from config_support import db
+import json
 
+db_dir = "/home/pi/piot/db.json"
 
 def setup_gpio():
     GPIO.setmode(GPIO.BCM)
@@ -8,12 +10,23 @@ def setup_gpio():
     for pin_info in db['gpio']:
         GPIO.setup(pin_info['pin'], GPIO.OUT)
 
-        GPIO.output(pin_info['pin'], pin_info['default_state'])
+        GPIO.output(pin_info['pin'], not pin_info['default_state'])
 
 def toggle_pin(pin):
     status = get_pin_status(pin)
 
     GPIO.output(pin, not status)
+
+    update_default_value(pin, status)
+
+def update_default_value(pin, value):
+    for pin_info in db['gpio']:
+        if pin_info['pin'] == pin:
+            pin_info['default_state'] = bool(value)
+
+    with open(db_dir, 'w') as outfile:
+        json.dump(db, outfile)
+
 
 def get_pin_status(pin):
     status = GPIO.input(pin)

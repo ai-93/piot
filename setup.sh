@@ -27,8 +27,3 @@ printf "\n Installing python dependencies completed successfully \n ############
 printf "\n Setup piot \n ##########################\n"
 python3 setup_support.py
 printf "\n Setup piot completed successfully \n ##########################\n"
-printf "\n Setup piot service \n ##########################\n"
-cp piot.service /lib/systemd/system/
-systemctl enable piot.service
-systemctl start piot
-printf "\n Setup piot service completed \n ##########################\n"

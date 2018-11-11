@@ -31,7 +31,7 @@ class Setup:
 
             self.gpio_list.append({"name": name, "pin": int(pin), "location": location, "default_state": bool(default_state)})
 
-            if continu.upper() == "N":
+            if str(continu).upper() == "N":
                 break
 
     def mqtt_setup(self):
@@ -54,12 +54,60 @@ class Setup:
 
         print("DB setup complete")
 
+    def setup_service(self):
+        print("\n Setup piot service \n ##########################\n")
+        os.system("cp {}/scrvice/piot.service /lib/systemd/system/".format(dir_path))
+        os.system("systemctl enable piot.service")
+        print("\n Setup piot service completed \n ##########################\n")
+
+    def start_server(self):
+        os.system("systemctl start piot")
+        print("Piot Server started")
+
+    def stop_server(self):
+        os.system("systemctl stop piot")
+        print("Piot Server stopped")
+
+    def restart_server(self):
+        os.system("systemctl restart piot")
+        print("Piot Server restarted")
+
+    def server_status(self):
+        status = os.popen("systemctl status piot")
+        print("Piot Server status")
+        print(status)
+
+    def server_management(self):
+        ck = input("1) Start\n2) Stop\n3) Restart\n4) Status\n\nOption: (default: 4)")
+
+        if int(ck) == 1:
+            self.start_server()
+        elif int(ck) == 2:
+            self.stop_server()
+        elif int(ck) == 3:
+            self.restart_server()
+        else:
+            self.server_status()
+
     def setup_init(self):
         print("DB check")
         self.check_if_db_exist()
         print("DB check completed")
         if not self.is_db_exist:
             self.create_db()
+
+            self.setup_service()
+        else:
+            if_update = raw_input("Do you want to update(y/n): ")
+
+            if str(if_update).upper() == "Y":
+                os.system("bash {}/scripts/update.sh".format(dir_path))
+
+        st = raw_input("Server management(y/n): ")
+
+        if str(st).upper() == "Y":
+            self.server_management()
+
 
 
 set = Setup()
