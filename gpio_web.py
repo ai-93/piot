@@ -23,9 +23,9 @@ def handle_mqtt_message(client, userdata, message):
     state = message.payload.decode()
 
     if state == "ON":
-        state = 1
-    else:
         state = 0
+    else:
+        state = 1
 
     current_state = get_pin_status(pin)
 
