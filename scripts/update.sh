@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-git pull origin dev
+git pull origin Dev
