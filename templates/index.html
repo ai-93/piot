@@ -22,7 +22,7 @@
 
         <div class="list-group" style="margin-top: 50px">
             {% for item in gpio_list %} {% if item.current_state %}
-            <nav class="navbar navbar-light bg-light" style="margin-top: 12px;">
+            <nav class="navbar navbar-light bg-dark" style="margin-top: 12px;">
                 <a class="navbar-brand" href="/gpio/{{ item.pin }}">
                     <img src="https://cdn1.iconfinder.com/data/icons/user-interface-11/100/10-512.png" width="30" height="30" class="d-inline-block align-top" alt=""> Pin: {{ item.pin }} | {{ item.location }} {{ item.name }}
                 </a>
@@ -34,7 +34,26 @@
                 </a>
             </nav>
             </a> {% endif %} {% endfor %}
-
+            <nav class="navbar navbar-light bg-light" style="margin-top: 12px;">
+                <a class="navbar-brand" href="https://maker.ifttt.com/trigger/ac_on/with/key/c7gXS9qsxTuTtG2n5OZaY3">
+                     AC ON
+                </a>
+            </nav>
+            <nav class="navbar navbar-light bg-light" style="margin-top: 12px;">
+                <a class="navbar-brand" href="https://maker.ifttt.com/trigger/ac_off/with/key/c7gXS9qsxTuTtG2n5OZaY3">
+                     AC OFF
+                </a>
+            </nav>
+            <nav class="navbar navbar-light bg-light" style="margin-top: 12px;">
+                <a class="navbar-brand" href="https://maker.ifttt.com/trigger/tv_on/with/key/c7gXS9qsxTuTtG2n5OZaY3">
+                     TV ON
+                </a>
+            </nav>
+            <nav class="navbar navbar-light bg-light" style="margin-top: 12px;">
+                <a class="navbar-brand" href="https://maker.ifttt.com/trigger/tv_off/with/key/c7gXS9qsxTuTtG2n5OZaY3">
+                     TV OFF
+                </a>
+            </nav>
         </div>
     </div>
     <!-- Optional JavaScript -->
