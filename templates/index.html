@@ -22,12 +22,31 @@
 
         <div class="list-group" style="margin-top: 50px">
             {% for item in gpio_list %} {% if item.current_state %}
-            <a href="/gpio/{{ item.pin }}" style="margin-top: 10px;" class="list-group-item list-group-item-action list-group-item-dark">
-                        Pin: {{ item.pin }} | {{ item.location }} {{ item.name }}
-                    </a> {% else %}
-            <a href="/gpio/{{ item.pin }}" style="margin-top: 10px;" class="list-group-item list-group-item-action list-group-item-success">
-                        Pin: {{ item.pin }} | {{ item.location }} {{ item.name }}
-                    </a> {% endif %} {% endfor %}
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://cdn1.iconfinder.com/data/icons/user-interface-11/100/11-512.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.location }} {{ item.name }}</h5>
+                    <p class="card-text">Pin: {{ item.pin }}</p>
+                    <a href="/gpio/{{ item.pin }}" class="btn btn-primary">Toggle</a>
+                </div>
+            </div>
+
+
+
+            <!-- <a href="/gpio/{{ item.pin }}" style="margin-top: 10px;" class="list-group-item list-group-item-action list-group-item-dark">
+                        Pin: {{ item.pin }} | {{ item.location }} {{ item.name }} -->
+            </a> {% else %}
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://cdn1.iconfinder.com/data/icons/user-interface-11/100/10-512.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.location }} {{ item.name }}</h5>
+                    <p class="card-text">Pin: {{ item.pin }}</p>
+                    <a href="/gpio/{{ item.pin }}" class="btn btn-primary">Toggle</a>
+                </div>
+            </div>
+            <!-- <a href="/gpio/{{ item.pin }}" style="margin-top: 10px;" class="list-group-item list-group-item-action list-group-item-success">
+                        Pin: {{ item.pin }} | {{ item.location }} {{ item.name }} -->
+            </a> {% endif %} {% endfor %}
 
         </div>
     </div>
