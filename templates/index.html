@@ -21,17 +21,13 @@
     <div class="container" style="margin-top: 50px">
 
         <div class="list-group" style="margin-top: 50px">
-            {% for item in gpio_list %}
-                {% if item.current_state %}
-                    <a href= "/gpio/{{ item.pin }}" class="list-group-item list-group-item-action list-group-item-dark">
+            {% for item in gpio_list %} {% if item.current_state %}
+            <a href="/gpio/{{ item.pin }}" style="margin-top: 10px;" class="list-group-item list-group-item-action list-group-item-dark">
                         Pin: {{ item.pin }} | {{ item.location }} {{ item.name }}
-                    </a>
-                {% else %}
-                    <a href= "/gpio/{{ item.pin }}" class="list-group-item list-group-item-action list-group-item-success">
+                    </a> {% else %}
+            <a href="/gpio/{{ item.pin }}" style="margin-top: 10px;" class="list-group-item list-group-item-action list-group-item-success">
                         Pin: {{ item.pin }} | {{ item.location }} {{ item.name }}
-                    </a>
-                {% endif %}
-            {% endfor %}
+                    </a> {% endif %} {% endfor %}
 
         </div>
     </div>
