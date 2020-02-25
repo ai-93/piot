@@ -31,7 +31,7 @@
                 </div>
             </div> -->
 
-            <nav class="navbar navbar-light bg-light">
+            <nav class="navbar navbar-light bg-light" style="margin-top: 10px;">
                 <a class="navbar-brand" href="/gpio/{{ item.pin }}">
                     <img src="https://cdn1.iconfinder.com/data/icons/user-interface-11/100/11-512.png" width="30" height="30" class="d-inline-block align-top" alt=""> Pin: {{ item.pin }} | {{ item.location }} {{ item.name }}
                 </a>
@@ -41,7 +41,7 @@
             <!-- <a href="/gpio/{{ item.pin }}" style="margin-top: 10px;" class="list-group-item list-group-item-action list-group-item-dark">
                         Pin: {{ item.pin }} | {{ item.location }} {{ item.name }} -->
             </a> {% else %}
-            <nav class="navbar navbar-light bg-light">
+            <nav class="navbar navbar-light bg-light" style="margin-top: 10px;">
                 <a class="navbar-brand" href="/gpio/{{ item.pin }}">
                     <img src="https://cdn1.iconfinder.com/data/icons/user-interface-11/100/10-512.png" width="30" height="30" class="d-inline-block align-top" alt=""> Pin: {{ item.pin }} | {{ item.location }} {{ item.name }}
                 </a>
