@@ -56,6 +56,24 @@ def gpio_toggle(pin):
     mqtt_publish(pin, status)
     return redirect("/")
 
+@app.route('/ir/tv/<int:state>')
+def tv_ir_toggle(state):
+    if(state == 1){
+        requests.get("https://maker.ifttt.com/trigger/tv_on/with/key/c7gXS9qsxTuTtG2n5OZaY3")
+    }else{
+        requests.get("https://maker.ifttt.com/trigger/tv_off/with/key/c7gXS9qsxTuTtG2n5OZaY3")
+    }
+    return redirect("/")
+
+@app.route('/ir/ac/<int:state>')
+def tv_ir_toggle(state):
+    if(state == 1){
+        requests.get("https://maker.ifttt.com/trigger/ac_on/with/key/c7gXS9qsxTuTtG2n5OZaY3")
+    }else{
+        requests.get("https://maker.ifttt.com/trigger/ac_off/with/key/c7gXS9qsxTuTtG2n5OZaY3")
+    }
+    return redirect("/")
+
 if __name__ == '__main__':
     setup_gpio()
     app.run(host="0.0.0.0", port=80, debug=True)
