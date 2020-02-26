@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, request, jsonify
 from gpio_support import get_gpio_list, setup_gpio, get_pin_status, toggle_pin, get_location
 from flask_mqtt import Mqtt
 from config_support import db
+import requests
 
 app = Flask(__name__)
 app.config['MQTT_BROKER_URL'] = db['mqtt']['broker']
