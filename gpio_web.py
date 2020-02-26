@@ -66,7 +66,7 @@ def tv_ir_toggle(state):
     return redirect("/")
 
 @app.route('/ir/ac/<int:state>')
-def tv_ir_toggle(state):
+def ac_ir_toggle(state):
     if(state == 1){
         requests.get("https://maker.ifttt.com/trigger/ac_on/with/key/c7gXS9qsxTuTtG2n5OZaY3")
     }else{
