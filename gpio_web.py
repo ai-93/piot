@@ -81,11 +81,13 @@ def get_tv_state():
     try:
         response = requests.get("http://192.168.1.25:4004",timeout=5)
         if response.status_code == 400:
-            return True
+            response = True
         else:
-            return False
+            response = False
     except:
-        return False
+        response = False
+    
+    return str(response)
 
 if __name__ == '__main__':
     setup_gpio()
