@@ -75,6 +75,18 @@ def ac_ir_toggle(state):
     
     return redirect("/")
 
+
+@app.route('/tv/state')
+def get_tv_state():
+    try:
+        response = requests.get("http://192.168.1.25:4004",timeout=5)
+        if response.status_code == 400:
+            return True
+        else:
+            return False
+    except:
+        return False
+
 if __name__ == '__main__':
     setup_gpio()
     app.run(host="0.0.0.0", port=8080, debug=True)
