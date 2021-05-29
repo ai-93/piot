@@ -15,6 +15,7 @@ mqtt = Mqtt(app)
 
 @mqtt.on_connect()
 def handle_connect(client, userdata, flags, rc):
+    mqtt.subscribe("{}/feeds/tv.state".format(db['mqtt']['username']))
     for item in db['gpio']:
         mqtt.subscribe("{}/feeds/{}.{}".format(db['mqtt']['username'], item['location'], item['pin']))
 
@@ -86,7 +87,7 @@ def get_tv_state():
             response = False
     except:
         response = False
-    
+    mqtt.publish("{}/feeds/tv.state".format(db['mqtt']['username']), response)
     return str(response)
 
 if __name__ == '__main__':
