@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, request, jsonify
 from gpio_support import get_gpio_list, setup_gpio, get_pin_status, toggle_pin, get_location
 from flask_mqtt import Mqtt
 from config_support import db
+from support import get_current_tv_state
 import requests
 
 app = Flask(__name__)
@@ -42,7 +43,7 @@ def mqtt_publish(pin, value):
 
 @app.route('/')
 def main():
-    return render_template('index.html', gpio_list = get_gpio_list())
+    return render_template('index.html', gpio_list = get_gpio_list(), tv_state = get_current_tv_state())
 
 @app.route('/gpio/<int:pin>')
 def gpio_toggle(pin):
@@ -79,15 +80,7 @@ def ac_ir_toggle(state):
 
 @app.route('/tv/state')
 def get_tv_state():
-    try:
-        response = requests.get("http://192.168.1.25:4004",timeout=5)
-        if response.status_code == 400:
-            response = True
-        else:
-            response = False
-    except:
-        response = False
-    mqtt.publish("{}/feeds/tv.state".format(db['mqtt']['username']), response)
+    mqtt.publish("{}/feeds/tv.state".format(db['mqtt']['username']), get_current_tv_state())
     return str(response)
 
 if __name__ == '__main__':

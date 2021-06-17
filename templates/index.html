@@ -34,6 +34,19 @@
                 </a>
             </nav>
             </a> {% endif %} {% endfor %}
+            {% if tv_state %}
+                <nav class="navbar navbar-light bg-dark" style="margin-top: 12px;">
+                    <a class="navbar-brand" href="/ir/tv/0">
+                        <img src="https://cdn1.iconfinder.com/data/icons/user-interface-11/100/11-512.png" width="30" height="30" class="d-inline-block align-top" alt=""> TV: {{ tv_state }} 
+                    </a>
+                </nav>
+            {% else %}
+            <nav class="navbar navbar-light bg-light" style="margin-top: 12px;">
+                <a class="navbar-brand" href="/ir/tv/1">
+                    <img src="https://cdn1.iconfinder.com/data/icons/user-interface-11/100/10-512.png" width="30" height="30" class="d-inline-block align-top" alt=""> TV: {{ tv_state }} 
+                </a>
+            </nav>
+            {% endif %}
             <nav class="navbar navbar-light bg-light" style="margin-top: 12px;">
                 <a class="navbar-brand" href="/ir/ac/1">
                      AC ON
@@ -42,16 +55,6 @@
             <nav class="navbar navbar-light bg-light" style="margin-top: 12px;">
                 <a class="navbar-brand" href="/ir/ac/0">
                      AC OFF
-                </a>
-            </nav>
-            <nav class="navbar navbar-light bg-light" style="margin-top: 12px;">
-                <a class="navbar-brand" href="/ir/tv/1">
-                     TV ON
-                </a>
-            </nav>
-            <nav class="navbar navbar-light bg-light" style="margin-top: 12px;">
-                <a class="navbar-brand" href="/ir/tv/0">
-                     TV OFF
                 </a>
             </nav>
         </div>
