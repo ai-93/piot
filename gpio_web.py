@@ -80,8 +80,9 @@ def ac_ir_toggle(state):
 
 @app.route('/tv/state')
 def get_tv_state():
-    mqtt.publish("{}/feeds/tv.state".format(db['mqtt']['username']), get_current_tv_state())
-    return str(response)
+    tv_state = get_current_tv_state()
+    mqtt.publish("{}/feeds/tv.state".format(db['mqtt']['username']), tv_state)
+    return str(tv_state)
 
 if __name__ == '__main__':
     setup_gpio()
