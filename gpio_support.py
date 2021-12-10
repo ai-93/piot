@@ -2,7 +2,7 @@
 from config_support import db
 import json
 
-db_dir = "/home/ubuntu/den/piot/db.json"
+db_dir = "/home/den/piot/db.json"
 
 def toggle_pin(pin):
     status = get_pin_status(pin)

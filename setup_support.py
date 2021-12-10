@@ -1,6 +1,6 @@
 import os, json
 
-db_dir = "/home/ubuntu/den/piot/db.json"
+db_dir = "/home/den/piot/db.json"
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 

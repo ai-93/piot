@@ -6,7 +6,7 @@ Wants=network-online.target
 [Service]
 User=root
 Group=root
-ExecStart=/usr/bin/python3 /home/ubuntu/den/piot/gpio_web.py
+ExecStart=/usr/bin/python3 /home/den/piot/gpio_web.py
 RemainAfterExit=no
 Restart=on-failure
 RestartSec=5s
