@@ -19,6 +19,7 @@ printf "\n User Permission check completed successfully \n #####################
 printf "\n Cloning piot repo \n ##########################\n"
 apt-get -y install git
 git clone https://github.com/ai-93/piot.git
+git checkout pihole-mqtt
 cd piot
 printf "\n Cloning piot repo completed successfully \n ##########################\n"
 printf "\n Installing python dependencies \n ##########################\n"
