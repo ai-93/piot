@@ -10,7 +10,7 @@ app.config['MQTT_BROKER_URL'] = db['mqtt']['broker']
 app.config['MQTT_BROKER_PORT'] = db['mqtt']['port']
 app.config['MQTT_USERNAME'] = db['mqtt']['username']
 app.config['MQTT_PASSWORD'] = db['mqtt']['password']
-app.config['MQTT_REFRESH_TIME'] = db['mqtt']['refresh_time']
+app.config['MQTT_KEEPALIVE'] = 5
 mqtt = Mqtt(app)
 
 
