@@ -38,7 +38,7 @@ class Setup:
 
     def setup_service(self):
         print("\n Setup piot service \n ##########################\n")
-        os.system("sudo cp {}/scrvice/piot.service /lib/systemd/system/".format(dir_path))
+        os.system("sudo cp {}/piot.service /lib/systemd/system/".format(dir_path))
         os.system("sudo systemctl enable piot.service")
         print("\n Setup piot service completed \n ##########################\n")
 
