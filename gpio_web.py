@@ -16,13 +16,17 @@ mqtt = Mqtt(app)
 
 @mqtt.on_connect()
 def handle_connect(client, userdata, flags, rc):
-    mqtt.subscribe("{}/feeds/den.block".format(db['mqtt']['username']))
-    mqtt.subscribe("{}/feeds/den.unblock".format(db['mqtt']['username']))
+    block = f"{db['mqtt']['username']}/feeds/den.block"
+    unblock = f"{db['mqtt']['username']}/feeds/den.unblock"
+    logging.info(block)
+    logging.info(unblock)
+    mqtt.subscribe(block)
+    mqtt.subscribe(unblock)
 
 @mqtt.on_message()
 def handle_mqtt_message(client, userdata, message):
-    logging.info(f"message.topic")
-    logging.info(f"message.payload.decode()")
+    logging.info(f"{message.topic}")
+    logging.info(f"{message.payload.decode()}")
 
 @app.route('/')
 def main():
