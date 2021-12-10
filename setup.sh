@@ -20,7 +20,9 @@ printf "\n Cloning piot repo \n ##########################\n"
 apt-get -y install git
 git clone https://github.com/ai-93/piot.git
 cd piot
+git status
 git checkout pihole-mqtt
+git status
 printf "\n Cloning piot repo completed successfully \n ##########################\n"
 printf "\n Installing python dependencies \n ##########################\n"
 pip3 install -r requirements.txt
