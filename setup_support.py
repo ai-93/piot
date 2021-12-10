@@ -80,12 +80,12 @@ class Setup:
 
             self.setup_service()
         else:
-            if_update = raw_input("Do you want to update(y/n): ")
+            if_update = input("Do you want to update(y/n): ")
 
             if str(if_update).upper() == "Y":
                 os.system("bash {}/scripts/update.sh".format(dir_path))
 
-        st = raw_input("Server management(y/n): ")
+        st = input("Server management(y/n): ")
 
         if str(st).upper() == "Y":
             self.server_management()
