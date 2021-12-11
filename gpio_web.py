@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, redirect
 from flask_mqtt import Mqtt
 from config_support import db
 import logging
@@ -30,7 +30,7 @@ def handle_mqtt_message(client, userdata, message):
 
 @app.route('/')
 def main():
-    return render_template('index.html')
+    return redirect("http://pi.hole")
 
 # @app.route('/tv/state')
 # def get_tv_state():
